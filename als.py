@@ -73,16 +73,15 @@ class WatchOutForFileCreations(QtCore.QThread):
         self.counter = 0
         print(self.work_folder)
         print(self.path)
-        self.observer.schedule(self.event_handler, self.path, recursive=False)
-        self.observer.start()
-        self.event_handler.created_signal.connect(lambda: self.created(self.event_handler.new_image_path,
-                                                                       align_on, save_on, stack_methode))
-
         # __ call watchdog __
         # call observer :
         self.observer = Observer()
         # call observer class :
         self.event_handler = MyEventHandler()
+        self.observer.schedule(self.event_handler, self.path, recursive=False)
+        self.observer.start()
+        self.event_handler.created_signal.connect(lambda: self.created(self.event_handler.new_image_path,
+                                                                       align_on, save_on, stack_methode))
 
     def created(self, new_image_path, align_on, save_on, stack_methode):
         self.counter = self.counter + 1
