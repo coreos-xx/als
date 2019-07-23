@@ -156,6 +156,7 @@ class als_main_window(QtWidgets.QMainWindow):
         super(als_main_window, self).__init__(parent)
         self.ui = Ui_stack_window()
         self.ui.setupUi(self)
+        self.check_folders()
 
         self.connect_actions()
         self.running = False
@@ -163,6 +164,13 @@ class als_main_window(QtWidgets.QMainWindow):
         self.align = False
         self.dark = False
         self.pause = False
+
+    def check_folders(self):
+        if not os.path.exists(os.path.expanduser(self.ui.tWork.text())):
+            self.cb_browse_work()
+
+        if not os.path.exists(os.path.expanduser(self.ui.tFolder.text())):
+            self.cb_browse_folder()
 
     def connect_actions(self):
 
@@ -277,7 +285,7 @@ class als_main_window(QtWidgets.QMainWindow):
         print("Updated GUI image")
 
     def cb_browse_folder(self):
-        DirName = QtWidgets.QFileDialog.getExistingDirectory(self, "Répertoire à scanner", self.ui.tFolder.text())
+        DirName = QtWidgets.QFileDialog.getExistingDirectory(self, "Veuillez indiquer le répertoire à scanner", self.ui.tFolder.text())
         if DirName:
             self.ui.tFolder.setText(DirName)
             self.ui.pbPlay.setEnabled(True)
@@ -289,7 +297,7 @@ class als_main_window(QtWidgets.QMainWindow):
             self.ui.tDark.setText(fileName)
 
     def cb_browse_work(self):
-        DirName = QtWidgets.QFileDialog.getExistingDirectory(self, "Répertoire de travail", self.ui.tWork.text())
+        DirName = QtWidgets.QFileDialog.getExistingDirectory(self, "Veuillez indiquer votre répertoire de travail", self.ui.tWork.text())
         if DirName:
             self.ui.tWork.setText(DirName)
 
