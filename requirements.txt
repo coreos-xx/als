@@ -5,3 +5,4 @@ watchdog
 pyqt5
 astroalign
 opencv-python
+rawpy
