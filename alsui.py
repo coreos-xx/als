@@ -629,6 +629,6 @@ class Ui_stack_window(object):
         self.action_quit.setShortcut(_translate("stack_window", "Ctrl+Q"))
         self.action_prefs.setText(_translate("stack_window", "&Preferences..."))
         self.action_prefs.setShortcut(_translate("stack_window", "Ctrl+P"))
-        self.action_about.setText(_translate("stack_window", "A &propos..."))
+        self.action_about.setText(_translate("stack_window", "A&bout ALS..."))
         self.action_about.setShortcut(_translate("stack_window", "?"))
 import resource_rc

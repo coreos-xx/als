@@ -398,8 +398,19 @@ class als_main_window(QtWidgets.QMainWindow):
         self.ui.log.append(_("Define new display value"))
 
     @pyqtSlot(name="on_action_quit_triggered")
+    @log
     def cb_quit(self):
         super().close()
+
+    @pyqtSlot(name="on_action_prefs_triggered")
+    @log
+    def cb_prefs(self):
+        pass
+
+    @pyqtSlot(name="on_action_about_triggered")
+    @log
+    def cb_about(self):
+        pass
 
     @log
     def ajuste_value(self, work_folder):
