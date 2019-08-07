@@ -397,6 +397,10 @@ class als_main_window(QtWidgets.QMainWindow):
             self.update_image(work_folder, add=False)
         self.ui.log.append(_("Define new display value"))
 
+    @pyqtSlot(name="on_action_quit_triggered")
+    def cb_quit(self):
+        super().close()
+
     @log
     def ajuste_value(self, work_folder):
 
